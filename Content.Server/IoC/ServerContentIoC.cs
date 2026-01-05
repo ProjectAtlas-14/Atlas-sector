@@ -5,6 +5,7 @@ using Content.Server.Administration.Notes;
 using Content.Server.Afk;
 using Content.Server.Chat.Managers;
 using Content.Server.Connection;
+using Content.Server.Consent;
 using Content.Server.Database;
 using Content.Server._DV.FeedbackPopup; // DeltaV
 using Content.Server.Discord;
@@ -34,6 +35,7 @@ using Content.Shared.Players.RateLimiting;
 
 namespace Content.Server.IoC;
 
+<<<<<<< HEAD
 internal static class ServerContentIoC
 {
     public static void Register(IDependencyCollection deps)
@@ -81,5 +83,11 @@ internal static class ServerContentIoC
         deps.Register<CVarControlManager>();
         deps.Register<DiscordLink>();
         deps.Register<DiscordChatLink>();
+=======
+            IoCManager.Register<DiscordLink>();
+            IoCManager.Register<DiscordChatLink>();
+            IoCManager.Register<IServerConsentManager, ServerConsentManager>();
+        }
+>>>>>>> 5a4a139e4d (Consent 1.0 (#28))
     }
 }

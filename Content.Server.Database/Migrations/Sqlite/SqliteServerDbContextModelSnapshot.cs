@@ -671,11 +671,16 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("connection_log", (string)null);
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
+=======
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+>>>>>>> 5a4a139e4d (Consent 1.0 (#28))
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
+<<<<<<< HEAD
                         .HasColumnName("dv_seen_tips_id");
 
                     b.Property<DateTime>("DismissedAt")
@@ -700,6 +705,56 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasDatabaseName("IX_dv_seen_tips_player_user_id_tip_proto_id");
 
                     b.ToTable("dv_seen_tips", (string)null);
+=======
+                        .HasColumnName("consent_settings_id");
+
+                    b.Property<string>("ConsentFreetext")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("consent_freetext");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_consent_settings");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("consent_settings", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("consent_toggle_id");
+
+                    b.Property<int>("ConsentSettingsId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("consent_settings_id");
+
+                    b.Property<string>("ToggleProtoId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("toggle_proto_id");
+
+                    b.Property<string>("ToggleProtoState")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("toggle_proto_state");
+
+                    b.HasKey("Id")
+                        .HasName("PK_consent_toggle");
+
+                    b.HasIndex("ConsentSettingsId", "ToggleProtoId")
+                        .IsUnique();
+
+                    b.ToTable("consent_toggle", (string)null);
+>>>>>>> 5a4a139e4d (Consent 1.0 (#28))
                 });
 
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
@@ -1752,6 +1807,7 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Server");
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
                 {
                     b.HasOne("Content.Server.Database.Player", null)
@@ -1761,6 +1817,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_dv_seen_tips_player_player_id");
+=======
+            modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
+                {
+                    b.HasOne("Content.Server.Database.ConsentSettings", "ConsentSettings")
+                        .WithMany("ConsentToggles")
+                        .HasForeignKey("ConsentSettingsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_consent_toggle_consent_settings_consent_settings_id");
+
+                    b.Navigation("ConsentSettings");
+>>>>>>> 5a4a139e4d (Consent 1.0 (#28))
                 });
 
             modelBuilder.Entity("Content.Server.Database.Job", b =>
@@ -2090,6 +2158,11 @@ namespace Content.Server.Database.Migrations.Sqlite
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.Navigation("BanHits");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+                {
+                    b.Navigation("ConsentToggles");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
