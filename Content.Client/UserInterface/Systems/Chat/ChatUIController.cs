@@ -84,6 +84,8 @@ public sealed partial class ChatUIController : UIController
         {SharedChatSystem.OOCPrefix, ChatSelectChannel.OOC},
         {SharedChatSystem.EmotesPrefix, ChatSelectChannel.Emotes},
         {SharedChatSystem.EmotesAltPrefix, ChatSelectChannel.Emotes},
+        {SharedChatSystem.SubtlePrefix, ChatSelectChannel.Subtle}, // Floofstation
+        {SharedChatSystem.SubtleOOCPrefix, ChatSelectChannel.SubtleOOC}, // Floofstation
         {SharedChatSystem.AdminPrefix, ChatSelectChannel.Admin},
         {SharedChatSystem.RadioCommonPrefix, ChatSelectChannel.Radio},
         {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead},
@@ -98,10 +100,12 @@ public sealed partial class ChatUIController : UIController
         {ChatSelectChannel.LOOC, SharedChatSystem.LOOCPrefix},
         {ChatSelectChannel.OOC, SharedChatSystem.OOCPrefix},
         {ChatSelectChannel.Emotes, SharedChatSystem.EmotesPrefix},
+        {ChatSelectChannel.Subtle, SharedChatSystem.SubtlePrefix}, // Floofstation
+        {ChatSelectChannel.SubtleOOC, SharedChatSystem.SubtleOOCPrefix}, // Floofstation
         {ChatSelectChannel.Admin, SharedChatSystem.AdminPrefix},
         {ChatSelectChannel.Radio, SharedChatSystem.RadioCommonPrefix},
         {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix},
-        {ChatSelectChannel.Telepathic, SharedChatSystem.TelepathicPrefix } //Nyano - Summary: associates telepathic with =.
+        {ChatSelectChannel.Telepathic, SharedChatSystem.TelepathicPrefix }, //Nyano - Summary: associates telepathic with =.
     };
 
     /// <summary>
@@ -204,6 +208,14 @@ public sealed partial class ChatUIController : UIController
 
         _input.SetInputCommand(ContentKeyFunctions.FocusEmote,
             InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Emotes)));
+
+        // Floofstation section
+        _input.SetInputCommand(ContentKeyFunctions.FocusSubtle, // floof
+            InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Subtle)));
+
+        _input.SetInputCommand(ContentKeyFunctions.FocusSubtleOOC, // floof
+            InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.SubtleOOC)));
+        // Floofstation section end
 
         _input.SetInputCommand(ContentKeyFunctions.FocusWhisperChat,
             InputCmdHandler.FromDelegate(_ => FocusChannel(ChatSelectChannel.Whisper)));
@@ -549,6 +561,10 @@ public sealed partial class ChatUIController : UIController
                 CanSendChannels |= ChatSelectChannel.Whisper;
                 CanSendChannels |= ChatSelectChannel.Radio;
                 CanSendChannels |= ChatSelectChannel.Emotes;
+                // Floofstation section - only non-ghosts can chat in those
+                FilterableChannels |= ChatChannel.Subtle;
+                FilterableChannels |= ChatChannel.SubtleOOC;
+                // Floofstation section end
             }
         }
 
@@ -557,6 +573,10 @@ public sealed partial class ChatUIController : UIController
         {
             FilterableChannels |= ChatChannel.Dead;
             CanSendChannels |= ChatSelectChannel.Dead;
+            // Floofstation section - bt admins also can
+            FilterableChannels |= ChatChannel.Subtle;
+            FilterableChannels |= ChatChannel.SubtleOOC;
+            // Floofstation section end
         }
 
         // only admins can see / filter asay
@@ -915,6 +935,15 @@ public sealed partial class ChatUIController : UIController
                 if (_config.GetCVar(CCVars.LoocAboveHeadShow))
                     AddSpeechBubble(msg, SpeechBubble.SpeechType.Looc);
                 break;
+
+            // Floofstation section. Did not bother adding new speech types since these are subsets of existing speech types anyway.
+            case ChatChannel.Subtle:
+                AddSpeechBubble(msg, SpeechBubble.SpeechType.Emote);
+                break;
+            case ChatChannel.SubtleOOC:
+                AddSpeechBubble(msg, SpeechBubble.SpeechType.Whisper);
+                break;
+            // Floofstation section end
         }
     }
 
