@@ -78,7 +78,7 @@ public sealed partial class ChatSystem
             if (MessageRangeCheck(session, data, range) == MessageRangeCheckResult.Disallowed)
                 continue;
 
-            _chatManager.ChatMessageToOne(ChatChannel.Subtle, message, wrappedMessage, source, false, session.Channel);
+            _chatManager.ChatMessageToOne(channel, message, wrappedMessage, source, false, session.Channel);
         }
 
         _replay.RecordServerMessage(new ChatMessage(channel, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
