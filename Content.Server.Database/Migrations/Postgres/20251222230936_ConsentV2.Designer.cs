@@ -6,6 +6,7 @@ using System.Text.Json;
 using Content.Server.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using NpgsqlTypes;
@@ -15,9 +16,11 @@ using NpgsqlTypes;
 namespace Content.Server.Database.Migrations.Postgres
 {
     [DbContext(typeof(PostgresServerDbContext))]
-    partial class PostgresServerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251222230936_ConsentV2")]
+    partial class ConsentV2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -711,11 +714,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         });
                 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
-=======
-=======
             modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
                 {
                     b.Property<int>("Id")
@@ -749,41 +747,11 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("consent_freetext_read_receipt", (string)null);
                 });
 
->>>>>>> 2d62b57526 (Consent v2 (#34))
             modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
->>>>>>> 5a4a139e4d (Consent 1.0 (#28))
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-<<<<<<< HEAD
-                        .HasColumnName("dv_seen_tips_id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DismissedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("dismissed_at");
-
-                    b.Property<Guid>("PlayerUserId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("player_user_id");
-
-                    b.Property<string>("TipProtoId")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("character varying(64)")
-                        .HasColumnName("tip_proto_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK_dv_seen_tips");
-
-                    b.HasIndex("PlayerUserId", "TipProtoId")
-                        .IsUnique()
-                        .HasDatabaseName("IX_dv_seen_tips_player_user_id_tip_proto_id");
-
-                    b.ToTable("dv_seen_tips", (string)null);
-=======
                         .HasColumnName("consent_settings_id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
@@ -848,7 +816,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsUnique();
 
                     b.ToTable("consent_toggle", (string)null);
->>>>>>> 5a4a139e4d (Consent 1.0 (#28))
                 });
 
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
@@ -1941,19 +1908,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Server");
                 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
-                {
-                    b.HasOne("Content.Server.Database.Player", null)
-                        .WithMany()
-                        .HasForeignKey("PlayerUserId")
-                        .HasPrincipalKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_dv_seen_tips_player_player_id");
-=======
-=======
             modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
                 {
                     b.HasOne("Content.Server.Database.ConsentSettings", "ReadConsentSettings")
@@ -1976,7 +1930,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Profile");
                 });
 
->>>>>>> 2d62b57526 (Consent v2 (#34))
             modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
                 {
                     b.HasOne("Content.Server.Database.ConsentSettings", "ConsentSettings")
@@ -1987,7 +1940,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasConstraintName("FK_consent_toggle_consent_settings_consent_settings_id");
 
                     b.Navigation("ConsentSettings");
->>>>>>> 5a4a139e4d (Consent 1.0 (#28))
                 });
 
             modelBuilder.Entity("Content.Server.Database.Job", b =>

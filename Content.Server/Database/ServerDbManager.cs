@@ -5,11 +5,15 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
+<<<<<<< HEAD
 using Content.Shared._DV.Tips; // DeltaV - Tips
+=======
+using Content.Shared._Common.Consent;
+>>>>>>> 2d62b57526 (Consent v2 (#34))
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
-using Content.Shared.Consent;
+using Content.Shared._Common.Consent;
 using Content.Shared.Database;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -340,7 +344,9 @@ namespace Content.Server.Database
         #region Consent Settings
 
         Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings);
-        Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId);
+        Task<ConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId);
+        Task<ConsentFreetextReadReceipt?> GetPlayerConsentReadReceipt(NetUserId readerUserId, int consentSettingsId);
+        Task<ConsentFreetextReadReceipt> UpdatePlayerConsentReadReceipt(NetUserId readerUserId, int readConsentSettingsId);
 
         #endregion
 
@@ -1142,12 +1148,23 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SavePlayerConsentSettingsAsync(userId, consentSettings));
         }
 
-        public Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId)
+        public Task<ConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId)
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetPlayerConsentSettingsAsync(userId));
         }
 
+        public Task<ConsentFreetextReadReceipt?> GetPlayerConsentReadReceipt(NetUserId readerUserId, int consentSettingsId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPlayerConsentReadReceipt(readerUserId, consentSettingsId));
+        }
+
+        public Task<ConsentFreetextReadReceipt> UpdatePlayerConsentReadReceipt(NetUserId readerUserId, int readConsentSettingsId)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UpdatePlayerConsentReadReceipt(readerUserId, readConsentSettingsId));
+        }
 
         // Wrapper functions to run DB commands from the thread pool.
         // This will avoid SynchronizationContext capturing and avoid running CPU work on the main thread.

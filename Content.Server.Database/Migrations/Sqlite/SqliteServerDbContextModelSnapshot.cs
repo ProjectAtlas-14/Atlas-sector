@@ -672,8 +672,42 @@ namespace Content.Server.Database.Migrations.Sqlite
                 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
 =======
+=======
+            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("consent_freetext_read_receipt_id");
+
+                    b.Property<DateTime>("ReadAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("read_at");
+
+                    b.Property<int>("ReadConsentSettingsId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("read_consent_settings_id");
+
+                    b.Property<Guid>("ReaderUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("reader_user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_consent_freetext_read_receipt");
+
+                    b.HasIndex("ReadConsentSettingsId")
+                        .HasDatabaseName("IX_consent_freetext_read_receipt_read_consent_settings_id");
+
+                    b.HasIndex("ReaderUserId", "ReadConsentSettingsId")
+                        .IsUnique();
+
+                    b.ToTable("consent_freetext_read_receipt", (string)null);
+                });
+
+>>>>>>> 2d62b57526 (Consent v2 (#34))
             modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
 >>>>>>> 5a4a139e4d (Consent 1.0 (#28))
                 {
@@ -713,6 +747,14 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("consent_freetext");
 
+                    b.Property<DateTime>("ConsentFreetextUpdatedAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("consent_freetext_updated_at");
+
+                    b.Property<int?>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("TEXT")
                         .HasColumnName("user_id");
@@ -720,7 +762,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.HasKey("Id")
                         .HasName("PK_consent_settings");
 
-                    b.HasIndex("UserId")
+                    b.HasIndex("ProfileId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_consent_settings_profile_id");
+
+                    b.HasIndex("UserId", "ProfileId")
                         .IsUnique();
 
                     b.ToTable("consent_settings", (string)null);
@@ -1808,6 +1854,7 @@ namespace Content.Server.Database.Migrations.Sqlite
                 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
                 {
                     b.HasOne("Content.Server.Database.Player", null)
@@ -1818,6 +1865,30 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasConstraintName("FK_dv_seen_tips_player_player_id");
 =======
+=======
+            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
+                {
+                    b.HasOne("Content.Server.Database.ConsentSettings", "ReadConsentSettings")
+                        .WithMany("ReadReceipts")
+                        .HasForeignKey("ReadConsentSettingsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_consent_freetext_read_receipt_consent_settings_read_consent_settings_id");
+
+                    b.Navigation("ReadConsentSettings");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithOne("ConsentSettings")
+                        .HasForeignKey("Content.Server.Database.ConsentSettings", "ProfileId")
+                        .HasConstraintName("FK_consent_settings_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
+>>>>>>> 2d62b57526 (Consent v2 (#34))
             modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
                 {
                     b.HasOne("Content.Server.Database.ConsentSettings", "ConsentSettings")
@@ -2163,6 +2234,8 @@ namespace Content.Server.Database.Migrations.Sqlite
             modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
                 {
                     b.Navigation("ConsentToggles");
+
+                    b.Navigation("ReadReceipts");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
@@ -2214,6 +2287,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Antags");
 
                     b.Navigation("CDProfile");
+
+                    b.Navigation("ConsentSettings");
 
                     b.Navigation("Jobs");
 
