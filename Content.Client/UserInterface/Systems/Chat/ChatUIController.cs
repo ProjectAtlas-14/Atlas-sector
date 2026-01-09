@@ -577,10 +577,6 @@ public sealed partial class ChatUIController : UIController
         {
             FilterableChannels |= ChatChannel.Dead;
             CanSendChannels |= ChatSelectChannel.Dead;
-            // Floofstation section - bt admins also can
-            FilterableChannels |= ChatChannel.Subtle;
-            FilterableChannels |= ChatChannel.SubtleOOC;
-            // Floofstation section end
         }
 
         // only admins can see / filter asay
