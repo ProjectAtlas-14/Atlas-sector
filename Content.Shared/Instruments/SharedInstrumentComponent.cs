@@ -35,6 +35,7 @@ public abstract partial class SharedInstrumentComponent : Component
     public BitArray FilteredChannels { get; set; } = new(RobustMidiEvent.MaxChannels, true);
 }
 
+<<<<<<< HEAD
 /// <summary>
 /// Component that indicates that musical instrument was activated (ui opened).
 /// </summary>
@@ -47,6 +48,8 @@ public sealed partial class ActiveInstrumentComponent : Component
     public MidiTrack?[] Tracks = [];
 }
 
+=======
+>>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
 [Serializable, NetSerializable]
 public sealed class InstrumentComponentState : ComponentState
 {

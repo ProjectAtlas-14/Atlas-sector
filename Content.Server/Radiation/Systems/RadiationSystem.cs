@@ -1,4 +1,4 @@
-using Content.Server.Radiation.Components;
+﻿using Content.Server.Radiation.Components;
 using Content.Shared.Nutrition.EntitySystems; // DeltaV
 using Content.Shared.Radiation.Components;
 using Content.Shared.Radiation.Events;
@@ -53,7 +53,11 @@ public sealed partial class RadiationSystem : EntitySystem
 
     public void IrradiateEntity(EntityUid uid, float radsPerSecond, float time, EntityUid? origin = null)
     {
+<<<<<<< HEAD
         var msg = new OnIrradiatedEvent(time, radsPerSecond, origin);
+=======
+        var msg = new OnIrradiatedEvent(time, radsPerSecond);
+>>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
         RaiseLocalEvent(uid, msg);
     }
 

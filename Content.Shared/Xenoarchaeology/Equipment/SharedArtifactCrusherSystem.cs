@@ -1,5 +1,6 @@
 using Content.Shared.Damage.Systems;
 using Content.Shared.Emag.Systems;
+<<<<<<< HEAD
 using Content.Shared.Examine;
 using Content.Shared.Popups;
 using Content.Shared.Power;
@@ -11,6 +12,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Collections;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
+=======
+>>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
 
 namespace Content.Shared.Xenoarchaeology.Equipment;
 
