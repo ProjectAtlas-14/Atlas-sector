@@ -1,4 +1,3 @@
-using Content.Shared.Actions;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Xenoarchaeology.Artifact.Prototypes;
@@ -212,8 +211,3 @@ public sealed partial class XenoArtifactComponent : Component
     [DataField]
     public float LockedEffectVagueProbability = 0.67f;
 }
-
-/// <summary>
-/// Event raised by sentient artifact to activate itself at no durability cost.
-/// </summary>
-public sealed partial class ArtifactSelfActivateEvent : InstantActionEvent;
