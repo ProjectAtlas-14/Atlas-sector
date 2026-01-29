@@ -46,7 +46,7 @@ public sealed class NodeScannerSystem : EntitySystem
 
     private void OnBeforeRangedInteract(EntityUid uid, NodeScannerComponent component, BeforeRangedInteractEvent args)
     {
-        if (args.Handled || !args.CanReach || args.Target is not { } target || !HasComp<XenoArtifactComponent>(target))
+        if (args.Handled || !args.CanReach || args.Target is not { } target)
             return;
 
         Entity<XenoArtifactUnlockingComponent?> unlockingEnt = TryComp<XenoArtifactUnlockingComponent>(target, out var unlockingComponent)
