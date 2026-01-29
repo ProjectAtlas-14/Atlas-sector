@@ -57,11 +57,11 @@ public abstract partial class SharedXenoArtifactSystem
     /// <summary>
     /// Attempts to shift artifact into unlocking state, in which it is going to listen to interactions, that could trigger nodes.
     /// </summary>
-    public void TriggerXenoArtifact(Entity<XenoArtifactComponent> ent, Entity<XenoArtifactNodeComponent>? node, bool force = false)
+    public void TriggerXenoArtifact(Entity<XenoArtifactComponent> ent, Entity<XenoArtifactNodeComponent> node)
     {
         // limits spontaneous chain activations, also prevents spamming every triggering tool to activate nodes
         // without real knowledge about triggers
-        if (!force && _timing.CurTime < ent.Comp.NextUnlockTime)
+        if (_timing.CurTime < ent.Comp.NextUnlockTime)
             return;
 
         // DeltaV - start of node scanner overhaul
@@ -81,7 +81,6 @@ public abstract partial class SharedXenoArtifactSystem
 
             if (_net.IsServer)
                 _popup.PopupEntity(Loc.GetString("artifact-unlock-state-begin"), ent);
-            Dirty(ent);
         }
         else if (parsedNode != null)
         {
@@ -125,12 +124,6 @@ public abstract partial class SharedXenoArtifactSystem
 
             Dirty(ent, unlockingComp);
         }
-    }
-
-    public void SetArtifexiumApplied(Entity<XenoArtifactUnlockingComponent> ent, bool val)
-    {
-        ent.Comp.ArtifexiumApplied = val;
-        Dirty(ent);
     }
 }
 
