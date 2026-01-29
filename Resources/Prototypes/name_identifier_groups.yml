@@ -29,7 +29,6 @@
   minValue: 1000
   maxValue: 9999
 
-<<<<<<< HEAD
 - type: nameIdentifierGroup
   id: Xenoborg
   prefix: XI # DeltaV - was don't have Format: Was name-identifier-format-xenoborg
@@ -42,8 +41,6 @@
   minValue: 100
   maxValue: 999
 
-=======
->>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
 # Used to suffix a number to any mob to identify player controlled mob griefing.
 - type: nameIdentifierGroup
   id: GenericNumber

@@ -94,7 +94,6 @@
     Acidic:
       methods: [ Touch ]
       effects:
-<<<<<<< HEAD
       - !type:ArtifactUnlock
         minScale: 5
 
@@ -112,12 +111,6 @@
       effects:
       - !type:ArtifactDurabilityRestore
         minScale: 5
-=======
-      - !type:ActivateArtifact
-        conditions:
-        - !type:ReagentThreshold
-          min: 5
->>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
 
 - type: reagent
   id: Benzene

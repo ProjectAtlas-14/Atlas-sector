@@ -11,10 +11,9 @@
       sprite: Objects/Specific/Xenoarchaeology/node_scanner.rsi
     - type: NodeScanner
     - type: UseDelay
-      delay: 3
+      delay: 1
     - type: GuideHelp
       guides:
-<<<<<<< HEAD
       - Xenoarchaeology
     - type: ActivatableUI
       key: enum.NodeScannerUiKey.Key
@@ -23,6 +22,3 @@
       interfaces:
         enum.NodeScannerUiKey.Key:
           type: NodeScannerBoundUserInterface
-=======
-      - ArtifactReports
->>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))

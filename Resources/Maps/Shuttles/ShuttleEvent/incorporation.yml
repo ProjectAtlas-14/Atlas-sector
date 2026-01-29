@@ -5310,48 +5310,11 @@ entities:
   - uid: 767
     components:
     - type: Transform
-<<<<<<< HEAD
       pos: 6.5,-2.5
       parent: 1
   - uid: 769
     components:
     - type: Transform
-=======
-      parent: 766
-    - type: Artifact
-      isSuppressed: True
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 769
-    components:
-    - type: Transform
-      parent: 768
-    - type: Artifact
-      isSuppressed: True
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 788
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5242987,-12.5
-      parent: 1
-    - type: BiasedArtifact
-  - uid: 789
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 6.506952,-12.5
-      parent: 1
-    - type: BiasedArtifact
-- proto: VendingMachineMedical
-  entities:
-  - uid: 230
-    components:
-    - type: Transform
->>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
       pos: 3.5,-5.5
       parent: 1
 - proto: VendingMachineTankDispenserEVA

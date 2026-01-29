@@ -10,10 +10,6 @@ using Content.Shared.Station.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-<<<<<<< HEAD
-=======
-using System.Linq;
->>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
 
 namespace Content.Server.StationEvents.Events;
 
@@ -53,7 +49,7 @@ public sealed class VentClogRule : StationEventSystem<VentClogRuleComponent>
             var quantity = weak ? component.WeakReagentQuantity : component.ReagentQuantity;
             solution.AddReagent(reagent, quantity);
 
-            var foamEnt = Spawn("Foam", transform.Coordinates);
+            var foamEnt = Spawn(ChemicalReactionSystem.FoamReaction, transform.Coordinates);
             var spreadAmount = weak ? component.WeakSpread : component.Spread;
             _smoke.StartSmoke(foamEnt, solution, component.Time, spreadAmount);
             Audio.PlayPvs(component.Sound, transform.Coordinates);

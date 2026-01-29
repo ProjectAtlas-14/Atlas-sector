@@ -1,18 +1,10 @@
 using Content.Server.Body.Systems;
-<<<<<<< HEAD
 using Content.Server.Stack;
-=======
-using Content.Server.Popups;
-using Content.Server.Power.Components;
-using Content.Server.Power.EntitySystems;
-using Content.Server.Stack;
-using Content.Server.Storage.Components;
-using Content.Server.Xenoarchaeology.XenoArtifacts;
->>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
 using Content.Shared.Body.Components;
 using Content.Shared.Storage.Components;
 using Content.Shared.Whitelist;
 using Content.Shared.Xenoarchaeology.Equipment;
+using Content.Shared.Xenoarchaeology.Equipment.Components;
 using Robust.Shared.Collections;
 using Robust.Shared.Random;
 
@@ -22,7 +14,6 @@ namespace Content.Server.Xenoarchaeology.Equipment.Systems;
 public sealed class ArtifactCrusherSystem : SharedArtifactCrusherSystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ArtifactSystem _artifact = default!;
     [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
@@ -48,7 +39,6 @@ public sealed class ArtifactCrusherSystem : SharedArtifactCrusherSystem
                 {
                     ContainerSystem.Insert((stack, null, null, null), crusher.OutputContainer);
                 }
-                _artifact.ForceActivateArtifact(contained);
             }
 
             if (!TryComp<BodyComponent>(contained, out var body))

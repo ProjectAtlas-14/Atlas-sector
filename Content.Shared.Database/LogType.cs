@@ -467,7 +467,6 @@ public enum LogType
     /// Logs related to botany, such as planting and harvesting crops
     /// </summary>
     Botany = 100,
-<<<<<<< HEAD
     /// <summary>
     /// Artifact node got activated.
     /// </summary>
@@ -482,6 +481,4 @@ public enum LogType
     /// Events relating to midi playback.
     /// </summary>
     Instrument = 103,
-=======
->>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
 }
