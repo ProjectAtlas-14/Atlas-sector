@@ -133,6 +133,7 @@ entity-effect-guidebook-status-effect-old =
                 } {NATURALFIXED($time, 3)} {MANY("second", $time)} of {LOC($key)}
     }
 
+<<<<<<< HEAD:Resources/Locale/en-US/guidebook/entity-effects/effects.ftl
 entity-effect-guidebook-status-effect =
     { $type ->
         [update]{ $chance ->
@@ -200,6 +201,15 @@ entity-effect-guidebook-knockdown =
     }
 
 entity-effect-guidebook-set-solution-temperature-effect =
+=======
+reagent-effect-guidebook-activate-artifact =
+    { $chance ->
+        [1] Attempts
+        *[other] attempt
+    } to activate an artifact
+
+reagent-effect-guidebook-set-solution-temperature-effect =
+>>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370)):Resources/Locale/en-US/guidebook/chemistry/effects.ftl
     { $chance ->
         [1] Sets
         *[other] set

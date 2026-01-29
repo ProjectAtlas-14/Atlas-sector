@@ -169,7 +169,7 @@ public abstract partial class SharedXenoArtifactSystem
         if (ent.Comp.Locked)
             return 0;
 
-        return Math.Max(0, ent.Comp.ResearchValue - ent.Comp.ConsumedResearchValue);
+        return ent.Comp.ResearchValue - ent.Comp.ConsumedResearchValue;
     }
 
     /// <summary>
@@ -403,6 +403,6 @@ public abstract partial class SharedXenoArtifactSystem
             : 1f + durabilityEffect;
 
         var predecessorNodes = GetPredecessorNodes((artifact, artifact), node);
-        nodeComponent.ResearchValue = (int)(Math.Pow(1.25, Math.Pow(predecessorNodes.Count, 1.5f)) * nodeComponent.BasePointValue * durabilityMultiplier);
+        nodeComponent.ResearchValue = (int)(Math.Pow(1.25, predecessorNodes.Count) * nodeComponent.BasePointValue * durabilityMultiplier);
     }
 }
