@@ -3,4 +3,4 @@
   name: guide-entry-atlas-Rules
   ruleEntry: true
   priority: 0
-  text: "/ServerInfo/Guidebook/_Atlas/ServerRules/AtlasRules.xml"
+  text: "/ServerInfo/Guidebook/_Atlas/Rules/AtlasRules.xml"
