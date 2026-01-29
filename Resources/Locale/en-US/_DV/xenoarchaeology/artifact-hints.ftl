@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 xenoarch-trigger-tip-psionic = Psionic disturbance
 
 xenoarch-effect-tip-unknown = Unknown
@@ -81,3 +82,12 @@ xenoarch-effect-tip-vague-element = Elemental creation
 xenoarch-effect-tip-vague-chemical = Molecular reaction
 xenoarch-effect-tip-vague-biological = Organic manipulation
 xenoarch-effect-tip-vague-pattern = Pattern mimicry
+=======
+# effects
+
+artifact-effect-hint-noosphere = Noöspheric shift
+
+# triggers
+
+artifact-trigger-hint-psionic = Psionic disturbance
+>>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))

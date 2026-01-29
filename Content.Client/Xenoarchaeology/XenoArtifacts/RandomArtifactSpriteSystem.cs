@@ -1,4 +1,4 @@
-using Content.Shared.Xenoarchaeology.XenoArtifacts;
+﻿using Content.Shared.Xenoarchaeology.XenoArtifacts;
 using Robust.Client.GameObjects;
 
 namespace Content.Client.Xenoarchaeology.XenoArtifacts;
@@ -15,16 +15,14 @@ public sealed class RandomArtifactSpriteSystem : VisualizerSystem<RandomArtifact
         if (!AppearanceSystem.TryGetData<int>(uid, SharedArtifactsVisuals.SpriteIndex, out var spriteIndex, args.Component))
             return;
 
-        if (!AppearanceSystem.TryGetData<bool>(uid, SharedArtifactsVisuals.IsUnlocking, out var isUnlocking, args.Component))
-            isUnlocking = false;
-
         if (!AppearanceSystem.TryGetData<bool>(uid, SharedArtifactsVisuals.IsActivated, out var isActivated, args.Component))
             isActivated = false;
 
         var spriteIndexStr = spriteIndex.ToString("D2");
-        var spritePrefix = isUnlocking ? "_on" : "";
+        var spritePrefix = isActivated ? "_on" : "";
 
         // layered artifact sprite
+<<<<<<< HEAD
         if (_sprite.LayerMapTryGet((uid, args.Sprite), ArtifactsVisualLayers.UnlockingEffect, out var layer, false))
         {
             var spriteState = "ano" + spriteIndexStr;
@@ -37,6 +35,14 @@ public sealed class RandomArtifactSpriteSystem : VisualizerSystem<RandomArtifact
                 _sprite.LayerSetRsiState((uid, args.Sprite), activationEffectLayer, "artifact-activation");
                 _sprite.LayerSetVisible((uid, args.Sprite), activationEffectLayer, isActivated);
             }
+=======
+        if (args.Sprite.LayerMapTryGet(ArtifactsVisualLayers.Effect, out var layer))
+        {
+            var spriteState = "ano" + spriteIndexStr;
+            args.Sprite.LayerSetState(ArtifactsVisualLayers.Base, spriteState);
+            args.Sprite.LayerSetState(layer, spriteState + "_on");
+            args.Sprite.LayerSetVisible(layer, isActivated);
+>>>>>>> parent of c43f3d500d (3mo xeno archeology (first phase) (#33370))
         }
         // non-layered
         else
@@ -44,12 +50,12 @@ public sealed class RandomArtifactSpriteSystem : VisualizerSystem<RandomArtifact
             var spriteState = "ano" + spriteIndexStr + spritePrefix;
             _sprite.LayerSetRsiState((uid, args.Sprite), ArtifactsVisualLayers.Base, spriteState);
         }
+
     }
 }
 
 public enum ArtifactsVisualLayers : byte
 {
     Base,
-    UnlockingEffect, // doesn't have to use this
-    ActivationEffect
+    Effect // doesn't have to use this
 }
