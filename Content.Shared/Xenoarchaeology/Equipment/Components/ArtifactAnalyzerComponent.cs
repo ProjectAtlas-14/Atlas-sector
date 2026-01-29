@@ -20,8 +20,13 @@ public sealed partial class ArtifactAnalyzerComponent : Component
     /// <summary>
     /// DeltaV - The ratio of research points per one glimmer.
     /// </summary>
-    public int ExtractRatio = 1250;
+    public int ExtractRatio = 750;
 
+    /// <summary>
+    /// DeltaV - The maximum added multiplier, reached at max glimmer.
+    /// </summary>
+    [DataField]
+    public float PointGlimmerMultiplier = 8f;
     /// <summary>
     /// The current artifact placed on this analyzer.
     /// Can be null if none are present.
