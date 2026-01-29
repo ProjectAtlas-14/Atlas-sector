@@ -70,13 +70,13 @@ public sealed partial class XenoArtifactComponent : Component
     /// By how much unlocking state should be prolonged for each node that was unlocked.
     /// </summary>
     [DataField]
-    public TimeSpan UnlockStateIncrementPerNode = TimeSpan.FromSeconds(10);
+    public TimeSpan UnlockStateIncrementPerNode = TimeSpan.FromSeconds(5);
 
     /// <summary>
     /// Minimum waiting time between unlock states.
     /// </summary>
     [DataField]
-    public TimeSpan UnlockStateRefractory = TimeSpan.FromSeconds(5);
+    public TimeSpan UnlockStateRefractory = TimeSpan.FromSeconds(10);
 
     /// <summary>
     /// DeltaV - If set, will overwrite the unlocking state time remaining as soon as a node is ready to unlock (triggers are met).
