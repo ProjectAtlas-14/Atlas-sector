@@ -1,0 +1,1 @@
+guide-entry-atlas-Rules = Atlas Sector Rules
