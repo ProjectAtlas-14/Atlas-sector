@@ -1,6 +1,6 @@
 - type: guideEntry 
-  id: AtlasRuleset
+  id: DeltaVRuleset
   name: guide-entry-atlas-Rules
   ruleEntry: true
-  priority: 0
+  priority: -2
   text: "/ServerInfo/Guidebook/_Atlas/Rules/AtlasRules.xml"
