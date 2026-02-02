@@ -324,7 +324,8 @@ public abstract partial class SharedChatSystem : EntitySystem
         bool hideLog = false,
         bool checkEmote = true,
         bool ignoreActionBlocker = false,
-        NetUserId? author = null
+        NetUserId? author = null,
+        bool checkLOS = true // Floofstation - emotes respect LOS by default
         )
     { }
 
@@ -479,7 +480,8 @@ public enum InGameICChatType : byte
     Speak,
     Emote,
     Whisper,
-    Telepathic // DeltaV - Psionic Chat
+    Telepathic, // DeltaV - Psionic Chat
+    Subtle, // Floofstation
 }
 
 /// <summary>
@@ -488,5 +490,6 @@ public enum InGameICChatType : byte
 public enum InGameOOCChatType : byte
 {
     Looc,
-    Dead
+    Dead,
+    SubtleLOOC, // Floofstation - unlike pre-rebase, this is an OOC channel
 }
