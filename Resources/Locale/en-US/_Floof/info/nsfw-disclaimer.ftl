@@ -4,7 +4,7 @@ nsfw-disclaimer-text =
 
     By joining, you confirm you are 18+ and consent to viewing and engaging in adult roleplay that may include the following themes:
     - BDSM (Bondage, Discipline, Dominance/submission, Sadism/Masochism)
-    - Power exchange dynamics (Master/slave, petplay, dom/sub scenarios)
+    - Power exchange dynamics (Petplay, dom/sub scenarios)
     - Non-con/consensual non-consent (CNC) – strictly roleplay, with consent
     - Breeding, impregnation fantasies
     - Sexual Servitude, Worship or Captivity
