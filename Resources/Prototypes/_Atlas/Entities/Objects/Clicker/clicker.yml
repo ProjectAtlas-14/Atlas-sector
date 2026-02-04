@@ -1,0 +1,59 @@
+- type: entity
+  parent: BaseItem
+  id: ToyClickerPink
+  name: clicker
+  description: A treat! Just a click away!
+  components:
+  - type: Sprite
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
+    state: pink
+  - type: Item
+    size: Tiny
+  - type: UseDelay
+    delay: 0.25
+  - type: EmitSoundOnUse
+    sound: "/Audio/_Atlas/Items/Clicker/click1.ogg"
+  - type: EmitSoundOnTrigger
+    sound: "/Audio/_Atlas/Items/Clicker/click1.ogg"
+  - type: EmitSoundOnActivate
+    sound: "/Audio/_Atlas/Items/Clicker/click1.ogg"
+
+- type: entity
+  parent: ToyClickerPink # yes pink...
+  id: ToyClickerRed
+  components:
+  - type: Sprite
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
+    state: red
+
+- type: entity
+  parent: ToyClickerPink
+  id: ToyClickerOrange
+  components:
+  - type: Sprite
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
+    state: orange
+
+- type: entity
+  parent: ToyClickerPink
+  id: ToyClickerBlue
+  components:
+  - type: Sprite
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
+    state: blue
+
+- type: entity
+  parent: ToyClickerPink
+  id: ToyClickerPurple
+  components:
+  - type: Sprite
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
+    state: purple
+
+- type: entity
+  parent: ToyClickerPink
+  id: ToyClickerGreen
+  components:
+  - type: Sprite
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
+    state: green
