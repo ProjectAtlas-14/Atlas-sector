@@ -5,7 +5,7 @@
   description: A treat! Just a click away!
   components:
   - type: Sprite
-    sprite: _Atlas/Objects/clicker/clicker.rsi
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
     state: pink
   - type: Item
     size: Tiny
@@ -19,11 +19,11 @@
     sound: "/Audio/_Atlas/Items/Clicker/click1.ogg"
 
 - type: entity
-  parent: ToyClickerPink
+  parent: ToyClickerPink # yes pink...
   id: ToyClickerRed
   components:
   - type: Sprite
-    sprite: _Atlas/Objects/clicker/clicker.rsi
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
     state: red
 
 - type: entity
@@ -31,7 +31,7 @@
   id: ToyClickerOrange
   components:
   - type: Sprite
-    sprite: _Atlas/Objects/clicker/clicker.rsi
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
     state: orange
 
 - type: entity
@@ -39,7 +39,7 @@
   id: ToyClickerBlue
   components:
   - type: Sprite
-    sprite: _Atlas/Objects/clicker/clicker.rsi
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
     state: blue
 
 - type: entity
@@ -47,7 +47,7 @@
   id: ToyClickerPurple
   components:
   - type: Sprite
-    sprite: _Atlas/Objects/clicker/clicker.rsi
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
     state: purple
 
 - type: entity
@@ -55,5 +55,5 @@
   id: ToyClickerGreen
   components:
   - type: Sprite
-    sprite: _Atlas/Objects/clicker/clicker.rsi
+    sprite: _Atlas/Objects/Clicker/clicker.rsi
     state: green
