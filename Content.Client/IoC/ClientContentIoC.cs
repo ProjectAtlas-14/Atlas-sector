@@ -1,3 +1,4 @@
+using Content.Client._Common.Consent.UI;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
