@@ -38,7 +38,7 @@ public sealed partial class DCCVars
     /// Its not perfect, but gets the job done.
     /// </summary>
     public static readonly CVarDef<bool> RoundEndPacifist =
-        CVarDef.Create("game.round_end_pacifist", false, CVar.SERVERONLY);
+        CVarDef.Create("game.round_end_pacifist", true, CVar.SERVERONLY);
 
     /*
      * No EORG
@@ -162,7 +162,7 @@ public sealed partial class DCCVars
     ///     If either the ooc color or this is not set, uses the admin.admin_bwoink_color value.
     /// </summary>
     public static readonly CVarDef<bool> UseAdminOOCColorInBwoinks =
-        CVarDef.Create("admin.bwoink_use_admin_ooc_color", false, CVar.SERVERONLY);
+        CVarDef.Create("admin.bwoink_use_admin_ooc_color", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     If an admin replies to users from discord, should it use their discord role color? (if applicable)
