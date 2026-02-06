@@ -31,8 +31,10 @@ public abstract partial class SharedChatSystem : EntitySystem
     public const char EmotesAltPrefix = '*';
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
-    public const char TelepathicPrefix = '='; //Nyano - Summary: Adds the telepathic channel's prefix.  
+    public const char TelepathicPrefix = '='; //Nyano - Summary: Adds the telepathic channel's prefix.
     public const char DefaultChannelKey = 'h';
+    public const char SubtlePrefix = '-'; // Floofstation
+    public const char SubtleOOCPrefix = '{'; // Floofstation
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
@@ -322,7 +324,8 @@ public abstract partial class SharedChatSystem : EntitySystem
         bool hideLog = false,
         bool checkEmote = true,
         bool ignoreActionBlocker = false,
-        NetUserId? author = null
+        NetUserId? author = null,
+        bool checkLOS = true // Floofstation - emotes respect LOS by default
         )
     { }
 
@@ -477,7 +480,8 @@ public enum InGameICChatType : byte
     Speak,
     Emote,
     Whisper,
-    Telepathic // DeltaV - Psionic Chat
+    Telepathic, // DeltaV - Psionic Chat
+    Subtle, // Floofstation
 }
 
 /// <summary>
@@ -486,5 +490,6 @@ public enum InGameICChatType : byte
 public enum InGameOOCChatType : byte
 {
     Looc,
-    Dead
+    Dead,
+    SubtleLOOC, // Floofstation - unlike pre-rebase, this is an OOC channel
 }
