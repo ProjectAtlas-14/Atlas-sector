@@ -20,12 +20,12 @@
           conditions:
           - !type:HasBudgetCondition
           - !type:MaxRuleOccurenceCondition
-        - id: Nukeops
-          weight: 25
-          conditions:
-          - !type:HasBudgetCondition
-          - !type:MaxRuleOccurenceCondition
-          - !type:PlayerCountCondition
+        # - id: Nukeops
+        #   weight: 25
+        #   conditions:
+        #   - !type:HasBudgetCondition
+        #   - !type:MaxRuleOccurenceCondition
+        #   - !type:PlayerCountCondition
             min: 20
         - id: Revolutionary
           weight: 5
@@ -101,12 +101,12 @@
             min: 20
           - !type:RoundDurationCondition
             min: 2700 # 45 minutes
-        - id: LoneOpsSpawn
-          weight: 5
-          conditions:
-          - !type:HasBudgetCondition
-          - !type:MaxRuleOccurenceCondition
-          - !type:PlayerCountCondition
-            min: 20
-          - !type:RoundDurationCondition
-            min: 2100 # 35 minutes
+        # - id: LoneOpsSpawn
+        #   weight: 5
+        #   conditions:
+        #   - !type:HasBudgetCondition
+        #   - !type:MaxRuleOccurenceCondition
+        #   - !type:PlayerCountCondition
+        #     min: 20
+        #   - !type:RoundDurationCondition
+        #     min: 2100 # 35 minutes
