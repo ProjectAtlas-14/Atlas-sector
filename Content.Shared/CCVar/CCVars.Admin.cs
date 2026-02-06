@@ -87,7 +87,7 @@ public sealed partial class CCVars
     ///     Whether to erase a player's chat messages and their entity from the game when banned.
     /// </summary>
     public static readonly CVarDef<bool> ServerBanErasePlayer =
-        CVarDef.Create("admin.server_ban_erase_player", false, CVar.ARCHIVE | CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("admin.server_ban_erase_player", true, CVar.ARCHIVE | CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     If true, will reset the last time the player has read the rules. This will mean on their next login they will be shown the rules again.
@@ -120,14 +120,14 @@ public sealed partial class CCVars
     ///     Should the ban details in admin channel include PII? (IP, HWID, etc)
     /// </summary>
     public static readonly CVarDef<bool> AdminShowPIIOnBan =
-        CVarDef.Create("admin.show_pii_onban", false, CVar.SERVERONLY);
+        CVarDef.Create("admin.show_pii_onban", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     If an admin joins a round by reading up or using the late join button, automatically
     ///     de-admin them.
     /// </summary>
     public static readonly CVarDef<bool> AdminDeadminOnJoin =
-        CVarDef.Create("admin.deadmin_on_join", false, CVar.SERVERONLY);
+        CVarDef.Create("admin.deadmin_on_join", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Overrides the name the client sees in ahelps. Set empty to disable.
@@ -162,14 +162,14 @@ public sealed partial class CCVars
     ///     If false, then admins will not be considered when checking whether the playercount is already above the soft player cap
     /// </summary>
     public static readonly CVarDef<bool> AdminsCountForMaxPlayers =
-        CVarDef.Create("admin.admins_count_for_max_players", false, CVar.SERVERONLY);
+        CVarDef.Create("admin.admins_count_for_max_players", true, CVar.SERVERONLY);
 
     /// <summary>
     /// Should admins be hidden from the player count reported to the launcher/via api?
     /// This is hub advert safe, in case that's a worry.
     /// </summary>
     public static readonly CVarDef<bool> AdminsCountInReportedPlayerCount =
-        CVarDef.Create("admin.admins_count_in_playercount", false, CVar.SERVERONLY);
+        CVarDef.Create("admin.admins_count_in_playercount", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Determine if custom rank names are used.
@@ -194,5 +194,5 @@ public sealed partial class CCVars
     /// If false, they will be kicked from the first when connecting to another.
     /// </summary>
     public static readonly CVarDef<bool> AdminAllowMultiServerPlay =
-        CVarDef.Create("admin.allow_multi_server_play", true, CVar.SERVERONLY);
+        CVarDef.Create("admin.allow_multi_server_play", false, CVar.SERVERONLY);
 }

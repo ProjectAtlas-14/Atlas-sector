@@ -11,14 +11,14 @@
     - id: BureaucraticError
     - id: ClericalError
     - id: CockroachMigration
-    - id: GasLeak
+    #- id: GasLeak // Atlas for being pain in the ass
     - id: GreytideVirus
     - id: IonStorm # its calm like 90% of the time smh
     - id: KudzuGrowth
     - id: MassHallucinations
     #- id: MimicVendorRule # DeltaV - disabled, see below
     - id: MouseMigration
-    - id: PowerGridCheck
+    #- id: PowerGridCheck
     #- id: RandomSentience # DeltaV - replaced with RandomSentienceGlimmer
     - id: SlimesSpawn
     - id: SolarFlare

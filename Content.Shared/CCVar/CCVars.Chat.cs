@@ -31,10 +31,10 @@ public sealed partial class CCVars
         CVarDef.Create("chat.rate_limit_announce_admins_delay", 15, CVar.SERVERONLY);
 
     public static readonly CVarDef<int> ChatMaxMessageLength =
-        CVarDef.Create("chat.max_message_length", 1000, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("chat.max_message_length", 2000, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<int> ChatMaxAnnouncementLength =
-        CVarDef.Create("chat.max_announcement_length", 256, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("chat.max_announcement_length", 512, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<bool> ChatSanitizerEnabled =
         CVarDef.Create("chat.chat_sanitizer_enabled", true, CVar.SERVERONLY);
@@ -77,7 +77,7 @@ public sealed partial class CCVars
     /// An option to toggle the automatic filling of the highlights with the character's info, if available.
     /// </summary>
     public static readonly CVarDef<bool> ChatAutoFillHighlights =
-        CVarDef.Create("chat.auto_fill_highlights", false, CVar.CLIENTONLY | CVar.ARCHIVE, "Toggles automatically filling the highlights with the character's information.");
+        CVarDef.Create("chat.auto_fill_highlights", true, CVar.CLIENTONLY | CVar.ARCHIVE, "Toggles automatically filling the highlights with the character's information.");
 
     /// <summary>
     /// The color in which the highlights will be displayed.

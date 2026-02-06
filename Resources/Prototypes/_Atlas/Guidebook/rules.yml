@@ -1,5 +1,5 @@
 - type: guideEntry 
-  id: DeltaVRuleset
+  id: AtlasRuleset
   name: guide-entry-atlas-Rules
   ruleEntry: true
   priority: -2

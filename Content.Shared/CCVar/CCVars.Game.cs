@@ -57,13 +57,13 @@ public sealed partial class CCVars
     ///     Controls if round-end window shows whether the objective was completed or not.
     /// </summary>
     public static readonly CVarDef<bool>
-        GameShowGreentext = CVarDef.Create("game.showgreentext", true, CVar.ARCHIVE | CVar.SERVERONLY);
+        GameShowGreentext = CVarDef.Create("game.showgreentext", false, CVar.ARCHIVE | CVar.SERVERONLY);
 
     /// <summary>
     ///     Controls the maximum number of character slots a player is allowed to have.
     /// </summary>
     public static readonly CVarDef<int>
-        GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 30, CVar.ARCHIVE | CVar.SERVERONLY);
+        GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 120, CVar.ARCHIVE | CVar.SERVERONLY);
 
     /// <summary>
     ///     Controls the game map prototype to load. SS14 stores these prototypes in Prototypes/Maps.
@@ -143,7 +143,7 @@ public sealed partial class CCVars
         CVarDef.Create("game.diagonalmovement", true, CVar.ARCHIVE);
 
     public static readonly CVarDef<int> SoftMaxPlayers =
-        CVarDef.Create("game.soft_max_players", 30, CVar.SERVERONLY | CVar.ARCHIVE);
+        CVarDef.Create("game.soft_max_players", 70, CVar.SERVERONLY | CVar.ARCHIVE);
 
     /// <summary>
     ///     If a player gets denied connection to the server,
