@@ -28,7 +28,10 @@ public sealed partial class AdminVerbSystem
 
     private static readonly EntProtoId DefaultTraitorRule = "Traitor";
     private static readonly EntProtoId DefaultInitialInfectedRule = "Zombie";
-    private static readonly EntProtoId DefaultNukeOpRule = "LoneOpsSpawn";
+    /// <summary>
+    /// Nuke ops disabled. If you want to add it back, make sure to add the proper rule in the yaml and uncomment this line.
+    /// private static readonly EntProtoId DefaultNukeOpRule = "LoneOpsSpawn";
+    /// </summary>
     private static readonly EntProtoId DefaultRevsRule = "Revolutionary";
     private static readonly EntProtoId DefaultThiefRule = "Thief";
     private static readonly EntProtoId DefaultChangelingRule = "Changeling";
@@ -97,20 +100,20 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(zombie);
 
-        var nukeOpName = Loc.GetString("admin-verb-text-make-nuclear-operative");
-        Verb nukeOp = new()
-        {
-            Text = nukeOpName,
-            Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new("/Textures/Clothing/Head/Hardsuits/syndicate.rsi"), "icon"),
-            Act = () =>
-            {
-                _antag.ForceMakeAntag<NukeopsRuleComponent>(targetPlayer, DefaultNukeOpRule);
-            },
-            Impact = LogImpact.High,
-            Message = string.Join(": ", nukeOpName, Loc.GetString("admin-verb-make-nuclear-operative")),
-        };
-        args.Verbs.Add(nukeOp);
+        // var nukeOpName = Loc.GetString("admin-verb-text-make-nuclear-operative");
+        // Verb nukeOp = new()
+        // {
+        //     Text = nukeOpName,
+        //     Category = VerbCategory.Antag,
+        //     Icon = new SpriteSpecifier.Rsi(new("/Textures/Clothing/Head/Hardsuits/syndicate.rsi"), "icon"),
+        //     Act = () =>
+        //     {
+        //         _antag.ForceMakeAntag<NukeopsRuleComponent>(targetPlayer, DefaultNukeOpRule);
+        //     },
+        //     Impact = LogImpact.High,
+        //     Message = string.Join(": ", nukeOpName, Loc.GetString("admin-verb-make-nuclear-operative")),
+        // };
+        // args.Verbs.Add(nukeOp);
 
         var pirateName = Loc.GetString("admin-verb-text-make-pirate");
         Verb pirate = new()
