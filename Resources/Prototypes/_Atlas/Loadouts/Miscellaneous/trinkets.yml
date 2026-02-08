@@ -1,0 +1,41 @@
+- type: loadout
+  id: ToyClickerPink
+  storage:
+    back:
+    - ToyClickerPink
+  groupBy: "clicker"
+
+- type: loadout
+  id: ToyClickerRed
+  storage:
+    back:
+    - ToyClickerRed
+  groupBy: "clicker"
+
+- type: loadout
+  id: ToyClickerOrange
+  storage:
+    back:
+    - ToyClickerOrange
+  groupBy: "clicker"
+
+- type: loadout
+  id: ToyClickerBlue
+  storage:
+    back:
+    - ToyClickerBlue
+  groupBy: "clicker"
+
+- type: loadout
+  id: ToyClickerPurple
+  storage:
+    back:
+    - ToyClickerPurple
+  groupBy: "clicker"
+
+- type: loadout
+  id: ToyClickerGreen
+  storage:
+    back:
+    - ToyClickerGreen
+  groupBy: "clicker"

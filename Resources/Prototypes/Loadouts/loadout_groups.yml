@@ -78,6 +78,14 @@
   - Eyepatch
   - SuperSynthesizerInstrument #Delta-V - Ports Super Synth Trinket from Starlight
   # End DeltaV Additions
+  # Begin Atlas Additions
+  - ToyClickerPink
+  - ToyClickerRed
+  - ToyClickerOrange
+  - ToyClickerBlue
+  - ToyClickerPurple
+  - ToyClickerGreen
+  # End Atlas Additions
 
 - type: loadoutGroup
   id: Glasses
