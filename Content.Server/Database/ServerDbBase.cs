@@ -1853,7 +1853,6 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
-<<<<<<< HEAD
         #region DV - Seen Tips
 
         public async Task<HashSet<string>> GetSeenTips(Guid player, CancellationToken cancel = default)
@@ -1926,7 +1925,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             return await db.DbContext.DVSeenTips
                 .Where(s => s.PlayerUserId == player)
                 .ExecuteDeleteAsync();
-=======
+
         #region Consent Settings
 
         private static async Task DeletePlayerConsentSettings(ServerDbContext db, NetUserId userId)
@@ -2022,15 +2021,13 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             if (consentSettings is null)
                 return new();
 
-<<<<<<< HEAD
             return new(consentSettings.ConsentFreetext, consentSettings.ConsentToggles.ToDictionary(
                 keySelector: t => new ProtoId<ConsentTogglePrototype>(t.ToggleProtoId),
                 elementSelector: t => t.ToggleProtoState
             ));
->>>>>>> 5a4a139e4d (Consent 1.0 (#28))
-=======
+
             return consentSettings;
->>>>>>> 2d62b57526 (Consent v2 (#34))
+
         }
 
         public async Task<ConsentFreetextReadReceipt?> GetPlayerConsentReadReceipt(NetUserId readerUserId, int consentSettingsId)
@@ -2065,10 +2062,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         }
         #endregion
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 5a4a139e4d (Consent 1.0 (#28))
         public abstract Task SendNotification(DatabaseNotification notification);
 
         // SQLite returns DateTime as Kind=Unspecified, Npgsql actually knows for sure it's Kind=Utc.

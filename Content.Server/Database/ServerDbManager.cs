@@ -5,11 +5,8 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
-<<<<<<< HEAD
 using Content.Shared._DV.Tips; // DeltaV - Tips
-=======
 using Content.Shared._Common.Consent;
->>>>>>> 2d62b57526 (Consent v2 (#34))
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
