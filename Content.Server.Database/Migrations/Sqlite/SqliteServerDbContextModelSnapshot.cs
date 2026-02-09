@@ -671,11 +671,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("connection_log", (string)null);
                 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
-=======
-=======
             modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
                 {
                     b.Property<int>("Id")
@@ -707,39 +702,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("consent_freetext_read_receipt", (string)null);
                 });
 
->>>>>>> 2d62b57526 (Consent v2 (#34))
             modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
->>>>>>> 5a4a139e4d (Consent 1.0 (#28))
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
-<<<<<<< HEAD
-                        .HasColumnName("dv_seen_tips_id");
-
-                    b.Property<DateTime>("DismissedAt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("dismissed_at");
-
-                    b.Property<Guid>("PlayerUserId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("player_user_id");
-
-                    b.Property<string>("TipProtoId")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("tip_proto_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK_dv_seen_tips");
-
-                    b.HasIndex("PlayerUserId", "TipProtoId")
-                        .IsUnique()
-                        .HasDatabaseName("IX_dv_seen_tips_player_user_id_tip_proto_id");
-
-                    b.ToTable("dv_seen_tips", (string)null);
-=======
                         .HasColumnName("consent_settings_id");
 
                     b.Property<string>("ConsentFreetext")
@@ -800,7 +767,37 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsUnique();
 
                     b.ToTable("consent_toggle", (string)null);
->>>>>>> 5a4a139e4d (Consent 1.0 (#28))
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("dv_seen_tips_id");
+
+                    b.Property<DateTime>("DismissedAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("dismissed_at");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<string>("TipProtoId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("tip_proto_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_dv_seen_tips");
+
+                    b.HasIndex("PlayerUserId", "TipProtoId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_dv_seen_tips_player_user_id_tip_proto_id");
+
+                    b.ToTable("dv_seen_tips", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
@@ -1853,19 +1850,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Server");
                 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
-                {
-                    b.HasOne("Content.Server.Database.Player", null)
-                        .WithMany()
-                        .HasForeignKey("PlayerUserId")
-                        .HasPrincipalKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_dv_seen_tips_player_player_id");
-=======
-=======
             modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
                 {
                     b.HasOne("Content.Server.Database.ConsentSettings", "ReadConsentSettings")
@@ -1888,7 +1872,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Profile");
                 });
 
->>>>>>> 2d62b57526 (Consent v2 (#34))
             modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
                 {
                     b.HasOne("Content.Server.Database.ConsentSettings", "ConsentSettings")
@@ -1899,7 +1882,17 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasConstraintName("FK_consent_toggle_consent_settings_consent_settings_id");
 
                     b.Navigation("ConsentSettings");
->>>>>>> 5a4a139e4d (Consent 1.0 (#28))
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", null)
+                        .WithMany()
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_dv_seen_tips_player_player_id");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Job", b =>

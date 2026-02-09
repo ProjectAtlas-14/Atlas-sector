@@ -16,8 +16,8 @@ using NpgsqlTypes;
 namespace Content.Server.Database.Migrations.Postgres
 {
     [DbContext(typeof(PostgresServerDbContext))]
-    [Migration("20251219042745_ConsentToggle")]
-    partial class ConsentToggle
+    [Migration("20260209221234_consent")]
+    partial class consent
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -714,6 +714,39 @@ namespace Content.Server.Database.Migrations.Postgres
                         });
                 });
 
+            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("consent_freetext_read_receipt_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ReadAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("read_at");
+
+                    b.Property<int>("ReadConsentSettingsId")
+                        .HasColumnType("integer")
+                        .HasColumnName("read_consent_settings_id");
+
+                    b.Property<Guid>("ReaderUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("reader_user_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_consent_freetext_read_receipt");
+
+                    b.HasIndex("ReadConsentSettingsId")
+                        .HasDatabaseName("IX_consent_freetext_read_receipt_read_consent_settings_id");
+
+                    b.HasIndex("ReaderUserId", "ReadConsentSettingsId")
+                        .IsUnique();
+
+                    b.ToTable("consent_freetext_read_receipt", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
                 {
                     b.Property<int>("Id")
@@ -728,6 +761,14 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("consent_freetext");
 
+                    b.Property<DateTime>("ConsentFreetextUpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("consent_freetext_updated_at");
+
+                    b.Property<int?>("ProfileId")
+                        .HasColumnType("integer")
+                        .HasColumnName("profile_id");
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
@@ -735,7 +776,11 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.HasKey("Id")
                         .HasName("PK_consent_settings");
 
-                    b.HasIndex("UserId")
+                    b.HasIndex("ProfileId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_consent_settings_profile_id");
+
+                    b.HasIndex("UserId", "ProfileId")
                         .IsUnique();
 
                     b.ToTable("consent_settings", (string)null);
@@ -771,6 +816,39 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsUnique();
 
                     b.ToTable("consent_toggle", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("dv_seen_tips_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DismissedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("dismissed_at");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<string>("TipProtoId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)")
+                        .HasColumnName("tip_proto_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_dv_seen_tips");
+
+                    b.HasIndex("PlayerUserId", "TipProtoId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_dv_seen_tips_player_user_id_tip_proto_id");
+
+                    b.ToTable("dv_seen_tips", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
@@ -1863,6 +1941,28 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Server");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
+                {
+                    b.HasOne("Content.Server.Database.ConsentSettings", "ReadConsentSettings")
+                        .WithMany("ReadReceipts")
+                        .HasForeignKey("ReadConsentSettingsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_consent_freetext_read_receipt_consent_settings_read_consent~");
+
+                    b.Navigation("ReadConsentSettings");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithOne("ConsentSettings")
+                        .HasForeignKey("Content.Server.Database.ConsentSettings", "ProfileId")
+                        .HasConstraintName("FK_consent_settings_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
                 {
                     b.HasOne("Content.Server.Database.ConsentSettings", "ConsentSettings")
@@ -1873,6 +1973,17 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasConstraintName("FK_consent_toggle_consent_settings_consent_settings_id");
 
                     b.Navigation("ConsentSettings");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", null)
+                        .WithMany()
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_dv_seen_tips_player_player_id");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Job", b =>
@@ -2207,6 +2318,8 @@ namespace Content.Server.Database.Migrations.Postgres
             modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
                 {
                     b.Navigation("ConsentToggles");
+
+                    b.Navigation("ReadReceipts");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
@@ -2258,6 +2371,8 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Antags");
 
                     b.Navigation("CDProfile");
+
+                    b.Navigation("ConsentSettings");
 
                     b.Navigation("Jobs");
 
