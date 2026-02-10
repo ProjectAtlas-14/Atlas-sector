@@ -2,3 +2,11 @@ The files below are licensed under CC-BY-SA 4.0 by the author who can be found a
 
 icon.svg
 logo.svg
+
+
+The files below are licensed under CC-BY-SA 3.0 by layziilydestruktiv on discord
+
+logo.png
+icon.ico
+icon (directory)
+splashlogo.png
