@@ -5,6 +5,7 @@ using Content.Server.Administration.Notes;
 using Content.Server.Afk;
 using Content.Server.Chat.Managers;
 using Content.Server.Connection;
+using Content.Server._Common.Consent;
 using Content.Server.Database;
 using Content.Server._DV.FeedbackPopup; // DeltaV
 using Content.Server.Discord;
@@ -34,52 +35,9 @@ using Content.Shared.Players.RateLimiting;
 
 namespace Content.Server.IoC;
 
-internal static class ServerContentIoC
-{
-    public static void Register(IDependencyCollection deps)
-    {
-        SharedContentIoC.Register(deps);
-        deps.Register<IChatManager, ChatManager>();
-        deps.Register<ISharedChatManager, ChatManager>();
-        deps.Register<IChatSanitizationManager, ChatSanitizationManager>();
-        deps.Register<IServerPreferencesManager, ServerPreferencesManager>();
-        deps.Register<IServerDbManager, ServerDbManager>();
-        deps.Register<RecipeManager, RecipeManager>();
-        deps.Register<INodeGroupFactory, NodeGroupFactory>();
-        deps.Register<IConnectionManager, ConnectionManager>();
-        deps.Register<ServerUpdateManager>();
-        deps.Register<IAdminManager, AdminManager>();
-        deps.Register<ISharedAdminManager, AdminManager>();
-        deps.Register<EuiManager, EuiManager>();
-        deps.Register<IVoteManager, VoteManager>();
-        deps.Register<IPlayerLocator, PlayerLocator>();
-        deps.Register<IAfkManager, AfkManager>();
-        deps.Register<IGameMapManager, GameMapManager>();
-        deps.Register<RulesManager, RulesManager>();
-        deps.Register<IBanManager, BanManager>();
-        deps.Register<ContentNetworkResourceManager>();
-        deps.Register<IAdminNotesManager, AdminNotesManager>();
-        deps.Register<GhostKickManager>();
-        deps.Register<ISharedAdminLogManager, AdminLogManager>();
-        deps.Register<IAdminLogManager, AdminLogManager>();
-        deps.Register<PlayTimeTrackingManager>();
-        deps.Register<UserDbDataManager>();
-        deps.Register<ServerInfoManager>();
-        deps.Register<PoissonDiskSampler>();
-        deps.Register<DiscordWebhook>();
-        deps.Register<VoteWebhooks>();
-        deps.Register<ServerDbEntryManager>();
-        deps.Register<ISharedPlaytimeManager, PlayTimeTrackingManager>();
-        deps.Register<ServerApi>();
-        deps.Register<JobWhitelistManager>();
-        deps.Register<PlayerRateLimitManager>();
-        deps.Register<SharedPlayerRateLimitManager, PlayerRateLimitManager>();
-        deps.Register<MappingManager>();
-        deps.Register<IWatchlistWebhookManager, WatchlistWebhookManager>();
-        deps.Register<ConnectionManager>();
-        deps.Register<MultiServerKickManager>();
-        deps.Register<CVarControlManager>();
-        deps.Register<DiscordLink>();
-        deps.Register<DiscordChatLink>();
+            IoCManager.Register<DiscordLink>();
+            IoCManager.Register<DiscordChatLink>();
+            IoCManager.Register<IServerConsentManager, ServerConsentManager>();
+        }
     }
 }
