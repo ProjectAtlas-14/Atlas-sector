@@ -39,7 +39,7 @@
   description: all-at-once-description
   showInVote: false
   rules:
-    - Nukeops
+    #- Nukeops
     - Traitor
     - Revolutionary
     - Zombie
@@ -62,7 +62,7 @@
   description: aller-at-once-description
   showInVote: false #Please god dont do this
   rules:
-    - Nukeops
+    #- Nukeops
     - Traitor
     - Revolutionary
     - Zombie
@@ -176,23 +176,23 @@
   rules:
     - DeathMatch31
 
-- type: gamePreset
-  id: Nukeops
-  alias:
-    - nukeops
-  name: nukeops-title
-  description: nukeops-description
-  showInVote: false
-  cooldown: 2 # Imp - Can't occur thrice
-  rules:
-  - Nukeops
-  - DummyNonAntagChance
-  - SubGamemodesRuleNoWizard
-  - BasicStationEventScheduler
-  - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
-  - BasicRoundstartVariation
-  - GlimmerEventScheduler # DeltaV
+    #- type: gamePreset
+    #  id: Nukeops
+    #  alias:
+    #    - nukeops
+    #  name: nukeops-title
+    #  description: nukeops-description
+    #  showInVote: false
+    #  cooldown: 2 # Imp - Can't occur thrice
+    #  rules:
+    #  - Nukeops
+    #  - DummyNonAntagChance
+    #  - SubGamemodesRuleNoWizard
+    #  - BasicStationEventScheduler
+    #  - MeteorSwarmScheduler
+    #  - SpaceTrafficControlEventScheduler
+    #  - BasicRoundstartVariation
+    #  - GlimmerEventScheduler # DeltaV
 
 - type: gamePreset
   id: Revolutionary
