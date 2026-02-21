@@ -2,7 +2,7 @@
   id: uma
   bodyPart: HeadTop
   markingCategory: HeadTop
-  forcedColoring: true
+  forcedColoring: false
   sprites:
   - sprite: _Atlas/Mobs/Customization/uma.rsi
     state: uma
