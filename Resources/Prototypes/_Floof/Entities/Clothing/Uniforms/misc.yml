@@ -1,4 +1,21 @@
 - type: entity
+  id: ClothingUniformShirtlessBase
+  abstract: true
+  components:
+  - type: Tag #DeltaV, needed for species with nonhuman legs/can only wear skirts
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+    - Skirt
+    - ShirtlessClothing # to allow equipping/unequipping under coats and the like
+
+- type: entity
+  id: ClothingUniformThongBase
+  parent: [ClothingUniformShirtlessBase, ClothingUniformBase]
+  abstract: true
+
+
+- type: entity
   parent: ClothingUniformThongBase
   id: ClothingUniformNudityPermit
   name: public nudity permit
