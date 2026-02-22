@@ -5,4 +5,4 @@
   forcedColoring: false
   sprites:
   - sprite: _Atlas/Mobs/Customization/uma.rsi
-    state: uma
+    state: icon
