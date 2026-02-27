@@ -1,0 +1,8 @@
+- type: marking
+  id: uma
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  forcedColoring: false
+  sprites:
+  - sprite: _Atlas/Mobs/Customization/uma.rsi
+    state: icon

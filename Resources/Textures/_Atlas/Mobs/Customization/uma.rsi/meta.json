@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "license": "CC-BY-3.0",
+    "copyright": "plyushsune on discord",
+    "size": {
+        "x": 40,
+        "y": 40
+    },
+    "states": [
+        {
+            "name": "icon",
+            "directions": 4
+        }
+    ]
+}
